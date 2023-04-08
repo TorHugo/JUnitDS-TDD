@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devsuperior.bds02.dto.CityDTO;
+import com.devsuperior.bds02.model.dto.CityDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -34,7 +34,7 @@ public class CityControllerIT {
 	public void findAllShouldReturnAllResourcesSortedByName() throws Exception {
 		
 		ResultActions result =
-				mockMvc.perform(get("/cities")
+				mockMvc.perform(get("/api/api/cities")
 					.contentType(MediaType.APPLICATION_JSON));
 
 		result.andExpect(status().isOk());
@@ -50,7 +50,7 @@ public class CityControllerIT {
 		String jsonBody = objectMapper.writeValueAsString(dto);
 		
 		ResultActions result =
-				mockMvc.perform(post("/cities")
+				mockMvc.perform(post("/api/cities")
 					.content(jsonBody)
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON));
@@ -66,7 +66,7 @@ public class CityControllerIT {
 		Long independentId = 5L;
 		
 		ResultActions result =
-				mockMvc.perform(delete("/cities/{id}", independentId));
+				mockMvc.perform(delete("/api/cities/{id}", independentId));
 		
 		
 		result.andExpect(status().isNoContent());
@@ -78,7 +78,7 @@ public class CityControllerIT {
 		Long nonExistingId = 50L;
 		
 		ResultActions result =
-				mockMvc.perform(delete("/cities/{id}", nonExistingId));
+				mockMvc.perform(delete("/api/cities/{id}", nonExistingId));
 
 		result.andExpect(status().isNotFound());
 	}
@@ -90,7 +90,7 @@ public class CityControllerIT {
 		Long dependentId = 1L;
 		
 		ResultActions result =
-				mockMvc.perform(delete("/cities/{id}", dependentId));
+				mockMvc.perform(delete("/api/cities/{id}", dependentId));
 				
 		result.andExpect(status().isBadRequest());
 	}

@@ -1,9 +1,9 @@
-package com.devsuperior.bds02.dto;
+package com.devsuperior.bds02.model.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.devsuperior.bds02.entities.Event;
+import com.devsuperior.bds02.model.entities.Event;
 
 public class EventDTO implements Serializable {
 	private static final long serialVersionUID = 1L;

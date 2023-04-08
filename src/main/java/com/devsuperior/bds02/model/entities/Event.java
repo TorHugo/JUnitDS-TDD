@@ -1,4 +1,4 @@
-package com.devsuperior.bds02.entities;
+package com.devsuperior.bds02.model.entities;
 
 import java.time.LocalDate;
 

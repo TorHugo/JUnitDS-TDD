@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.devsuperior.bds02.dto.EventDTO;
+import com.devsuperior.bds02.model.dto.EventDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -38,7 +38,7 @@ public class EventControllerIT {
 		String jsonBody = objectMapper.writeValueAsString(dto);
 		
 		ResultActions result =
-				mockMvc.perform(put("/events/{id}", existingId)
+				mockMvc.perform(put("/api/events/{id}", existingId)
 					.content(jsonBody)
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON));
